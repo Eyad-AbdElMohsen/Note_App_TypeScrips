@@ -28,18 +28,12 @@ app.get('/add' , async(req : Request , res : Response) =>{
     res.render('Add');
 })
 app.post('/add' , async(req : Request , res : Response) =>{
-    console.log(22);
     await mongoose.connect(DB_URL);
     let newNote = new Note ({
         paragraph : req.body.paragraph,
     })
-    console.log(req.body);
-    console.log(333);
     let note = await newNote.save();
-    console.log(444);
-    console.log(note);
     mongoose.disconnect();
-    console.log(555);
     res.redirect('/');
 })
 app.listen(port , () => {
